@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Diogo Vieira · portfólio</title>
+<meta name="description" content="Projetos de Diogo Vieira: apps Flutter, APIs Django e Node, painéis Vue e análise de dados em Python, com demonstrações no ar.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%237aa2f7'/%3E%3Ctext x='32' y='42' font-size='30' font-family='Arial' font-weight='700' text-anchor='middle' fill='%230b0d12'%3EDV%3C/text%3E%3C/svg%3E">
+<style>
+  :root { --fundo:#0f1117; --card:#161a24; --borda:#262c3a; --texto:#e6edf3; --texto2:#9aa4b2; --acento:#7aa2f7; --acento2:#4fd1c5; --chip:#1d2331; }
+  * { box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { margin:0; background:radial-gradient(1100px 600px at 15% 0%, #1a2238 0%, var(--fundo) 55%); color:var(--texto);
+    font-family:Inter, "Segoe UI", system-ui, -apple-system, sans-serif; line-height:1.55; }
+  a { color:var(--acento); text-decoration:none; }
+  .wrap { max-width:1100px; margin:0 auto; padding:0 20px; }
+  header { padding:28px 0 8px; display:flex; justify-content:space-between; align-items:center; gap:16px; }
+  .marca { font-weight:800; letter-spacing:-0.02em; font-size:18px; }
+  nav a { color:var(--texto2); margin-left:18px; font-size:14px; font-weight:600; }
+  nav a:hover { color:var(--texto); }
+  .hero { padding:56px 0 36px; display:grid; grid-template-columns:1.2fr .8fr; gap:40px; align-items:center; }
+  .hero h1 { font-size:44px; line-height:1.1; margin:0 0 12px; letter-spacing:-0.03em; }
+  .hero .sub { color:var(--acento2); font-weight:700; margin-bottom:16px; font-size:17px; }
+  .hero p { color:var(--texto2); font-size:17px; margin:0 0 22px; max-width:60ch; }
+  .botoes { display:flex; flex-wrap:wrap; gap:10px; }
+  .btn { display:inline-flex; align-items:center; gap:8px; padding:10px 16px; border-radius:10px; font-weight:600; font-size:14px;
+    border:1px solid var(--borda); background:var(--card); color:var(--texto); transition:transform .12s, border-color .12s; }
+  .btn:hover { transform:translateY(-1px); border-color:var(--acento); }
+  .btn.principal { background:var(--acento); border-color:var(--acento); color:#0b0d12; }
+  .btn.pequeno { padding:7px 12px; font-size:13px; border-radius:8px; }
+  .fatos { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; }
+  .fato { background:var(--card); border:1px solid var(--borda); border-radius:14px; padding:16px; }
+  .fato b { display:block; font-size:26px; letter-spacing:-0.02em; color:var(--texto); }
+  .fato span { color:var(--texto2); font-size:13px; }
+  h2 { font-size:26px; letter-spacing:-0.02em; margin:48px 0 6px; }
+  .lead { color:var(--texto2); margin:0 0 22px; }
+  .grade { display:grid; grid-template-columns:repeat(auto-fill, minmax(320px, 1fr)); gap:18px; }
+  .card { background:var(--card); border:1px solid var(--borda); border-radius:16px; overflow:hidden; display:flex; flex-direction:column;
+    transition:transform .15s, border-color .15s; }
+  .card:hover { transform:translateY(-2px); border-color:#3a4356; }
+  .capa { aspect-ratio:16/10; background:#0b0d12; overflow:hidden; position:relative; }
+  .capa img { width:100%; height:100%; object-fit:cover; object-position:top; display:block; }
+  .capa.vazia { display:grid; place-items:center; background:linear-gradient(135deg, #1a2238, #10141d); color:var(--acento); font-size:48px; font-weight:800; letter-spacing:-0.04em; }
+  .capa .tag { position:absolute; top:10px; left:10px; background:rgba(11,13,18,.85); border:1px solid var(--borda); color:var(--acento2);
+    font-size:11px; font-weight:700; padding:4px 8px; border-radius:999px; letter-spacing:.04em; text-transform:uppercase; }
+  .corpo { padding:16px 18px 18px; display:flex; flex-direction:column; gap:10px; flex:1; }
+  .corpo h3 { margin:0; font-size:19px; letter-spacing:-0.01em; }
+  .corpo p { margin:0; color:var(--texto2); font-size:14.5px; }
+  .chips { display:flex; flex-wrap:wrap; gap:6px; }
+  .chip { background:var(--chip); border:1px solid var(--borda); color:var(--texto2); font-size:12px; padding:3px 9px; border-radius:999px; }
+  .links { display:flex; flex-wrap:wrap; gap:8px; margin-top:auto; padding-top:6px; }
+  .sobre { display:grid; grid-template-columns:1.1fr .9fr; gap:28px; }
+  .sobre ul { margin:0; padding-left:18px; color:var(--texto2); }
+  .sobre li { margin-bottom:8px; }
+  .caixa { background:var(--card); border:1px solid var(--borda); border-radius:16px; padding:20px; }
+  .caixa h4 { margin:0 0 10px; font-size:14px; letter-spacing:.06em; text-transform:uppercase; color:var(--texto2); }
+  footer { margin:56px 0 28px; color:var(--texto2); font-size:13px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; border-top:1px solid var(--borda); padding-top:18px; }
+  @media (max-width: 860px) { .hero { grid-template-columns:1fr; padding-top:28px; } .hero h1 { font-size:34px; } .sobre { grid-template-columns:1fr; } nav a { margin-left:12px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="marca">Diogo Vieira</div>
+    <nav><a href="#projetos">Projetos</a><a href="#sobre">Sobre</a><a href="#contato">Contato</a><a href="https://github.com/DiogusVincere" target="_blank" rel="noopener">GitHub</a></nav>
+  </header>
+
+  <section class="hero">
+    <div>
+      <h1>Desenvolvedor Python, automação e apps</h1>
+      <div class="sub">Transformo processos manuais em software que a equipe usa todo dia</div>
+      <p>Construo ferramentas desktop e web que leem planilhas, PDFs e XML, cruzam dados de fontes diferentes e
+         entregam o resultado pronto para o sistema de destino. Nos projetos em equipe, apps Flutter, APIs Django e
+         Node e painéis em Vue. Abaixo, tudo com demonstração no ar e código aberto.</p>
+      <div class="botoes">
+        <a class="btn principal" href="#projetos">Ver projetos</a>
+        <a class="btn" href="https://github.com/DiogusVincere" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/in/diogo-vieira-de-lima-165767234" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+    <div class="fatos">
+      <div class="fato"><b>8</b><span>projetos publicados com demo</span></div>
+      <div class="fato"><b>3</b><span>apps Flutter com APK e versão web</span></div>
+      <div class="fato"><b>4</b><span>APIs no ar (Django e Node)</span></div>
+      <div class="fato"><b>Python</b><span>pandas, Tkinter, lxml, pdfplumber</span></div>
+    </div>
+  </section>
+
+  <h2 id="projetos">Projetos</h2>
+  <p class="lead">Cada card tem a demonstração, o código e, nos apps, o APK para Android. Os serviços gratuitos dormem sem uso: o primeiro acesso pode levar uns 30 segundos.</p>
+  <div class="grade">
+
+    <article class="card">
+      <div class="capa"><img src="img/mangetech-app.jpg" alt="App do MangeTech numa moldura de celular"><span class="tag">Projeto em equipe</span></div>
+      <div class="corpo">
+        <h3>MangeTech</h3>
+        <p>Chamados de manutenção e gestão de ativos: abertura e acompanhamento de chamados, ativos com QR code, papéis de usuário, histórico com fotos e dashboard gerencial. API Django REST, painel Vue 3 + TypeScript e app Flutter.</p>
+        <div class="chips"><span class="chip">Django REST</span><span class="chip">Vue 3</span><span class="chip">TypeScript</span><span class="chip">Flutter</span><span class="chip">Render · Vercel</span></div>
+        <div class="links">
+          <a class="btn pequeno principal" href="https://integrador4-final.vercel.app" target="_blank" rel="noopener">Painel web</a>
+          <a class="btn pequeno" href="https://diogusvincere.github.io/mangetech/" target="_blank" rel="noopener">App (web)</a>
+          <a class="btn pequeno" href="https://github.com/DiogusVincere/mangetech/releases" target="_blank" rel="noopener">APK</a>
+          <a class="btn pequeno" href="https://github.com/DiogusVincere/mangetech" target="_blank" rel="noopener">Código</a>
+        </div>
+        <p style="font-size:12.5px">Entrar com <code>demo@mangetech.local</code> / <code>demo1234</code></p>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="capa"><img src="img/agrotech.jpg" alt="AgroTech numa moldura de celular"><span class="tag">IoT · Flutter</span></div>
+      <div class="corpo">
+        <h3>AgroTech</h3>
+        <p>App de monitoramento de cultivo: leitura de sensores, acionamento da bomba de irrigação por API, previsão do tempo e chatbot. Sem a API dos sensores no ar, mostra dados de exemplo e avisa na tela.</p>
+        <div class="chips"><span class="chip">Flutter</span><span class="chip">Dart</span><span class="chip">REST</span><span class="chip">Langflow</span><span class="chip">GitHub Actions</span></div>
+        <div class="links">
+          <a class="btn pequeno principal" href="https://diogusvincere.github.io/agrotech-app/" target="_blank" rel="noopener">Demonstração</a>
+          <a class="btn pequeno" href="https://github.com/DiogusVincere/agrotech-app/releases" target="_blank" rel="noopener">APK</a>
+          <a class="btn pequeno" href="https://github.com/DiogusVincere/agrotech-app" target="_blank" rel="noopener">Código</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="capa"><img src="img/mange-books.jpg" alt="Página inicial do Mange Book"><span class="tag">Full stack</span></div>
+      <div class="corpo">
+        <h3>Mange Books</h3>
+        <p>Sistema de biblioteca: catálogo com capas, busca, reservas, avaliações e perfil, com autenticação JWT. Na demo, a API sobe um MongoDB embutido e recria os dados de exemplo a cada reinício.</p>
+        <div class="chips"><span class="chip">Vue 3</span><span class="chip">Node · Express</span><span class="chip">MongoDB</span><span class="chip">JWT</span></div>
+        <div class="links">
+          <a class="btn pequeno principal" href="https://mange-books.vercel.app" target="_blank" rel="noopener">Demonstração</a>
+          <a class="btn pequeno" href="https://github.com/DiogusVincere/mange-books" target="_blank" rel="noopener">Código</a>
+        </div>
+        <p style="font-size:12.5px">Entrar com <code>demo@demo.com</code> / <code>demo1234</code></p>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="capa vazia">Loja<span class="tag">Flutter · Django</span></div>
+      <div class="corpo">
+        <h3>Loja Flutter + Django</h3>
+        <p>App de pedidos com catálogo por categoria, carrinho, endereço pelo CEP (ViaCEP) e checkout, falando com uma API Django REST com JWT.</p>
+        <div class="chips"><span class="chip">Flutter</span><span class="chip">Django REST</span><span class="chip">JWT</span><span class="chip">ViaCEP</span></div>
+        <div class="links">
+          <a class="btn pequeno principal" href="https://diogusvincere.github.io/loja-flutter-django/" target="_blank" rel="noopener">App (web)</a>
+          <a class="btn pequeno" href="https://github.com/DiogusVincere/loja-flutter-django/releases" target="_blank" rel="noopener">APK</a>
+          <a class="btn pequeno" href="https://github.com/DiogusVincere/loja-flutter-django" target="_blank" rel="noopener">Código</a>
+        </div>
+        <p style="font-size:12.5px">Entrar com <code>demo</code> / <code>demo1234</code></p>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="capa vazia">API<span class="tag">Swagger</span></div>
+      <div class="corpo">
+        <h3>API Indústria 4.0</h3>
+        <p>API REST com JWT para chão de fábrica: funcionários por cargo e permissões, máquinas com manutenção preventiva, lotes com inspeção e estatísticas de produção. Documentação interativa com Swagger.</p>
+        <div class="chips"><span class="chip">Django REST</span><span class="chip">JWT</span><span class="chip">drf-spectacular</span><span class="chip">Testes</span></div>
+        <div class="links">
+          <a class="btn pequeno principal" href="https://api-industria-jwt.onrender.com/api/docs/" target="_blank" rel="noopener">Swagger</a>
+          <a class="btn pequeno" href="https://github.com/DiogusVincere/api-industria-jwt" target="_blank" rel="noopener">Código</a>
+        </div>
+        <p style="font-size:12.5px">Token com <code>demo</code> / <code>demo1234</code></p>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="capa vazia">IIoT<span class="tag">Vue · MQTT</span></div>
+      <div class="corpo">
+        <h3>Dashboard IIoT</h3>
+        <p>Painel de sensores de plantas e tanque (umidade, temperatura, pH) com gráficos em tempo real e cadastro de manutenções. Firmware ESP32 publicando por MQTT. A demo roda com dados gravados, sem tokens.</p>
+        <div class="chips"><span class="chip">Vue 3</span><span class="chip">TypeScript</span><span class="chip">Chart.js</span><span class="chip">ESP32 · MQTT</span></div>
+        <div class="links">
+          <a class="btn pequeno principal" href="https://diogusvincere.github.io/iiot-dashboard/" target="_blank" rel="noopener">Demonstração</a>
+          <a class="btn pequeno" href="https://github.com/DiogusVincere/iiot-dashboard" target="_blank" rel="noopener">Código</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="capa vazia">K-means<span class="tag">Dados</span></div>
+      <div class="corpo">
+        <h3>Análise de ações com K-means</h3>
+        <p>Análise exploratória e clusterização de uma carteira de ações: método do cotovelo, silhueta e visualizações 2D e 3D, em notebook com os resultados comentados.</p>
+        <div class="chips"><span class="chip">Python</span><span class="chip">pandas</span><span class="chip">scikit-learn</span><span class="chip">Jupyter</span></div>
+        <div class="links">
+          <a class="btn pequeno principal" href="https://github.com/DiogusVincere/analise-acoes-kmeans/blob/main/codigo.ipynb" target="_blank" rel="noopener">Notebook</a>
+          <a class="btn pequeno" href="https://github.com/DiogusVincere/analise-acoes-kmeans" target="_blank" rel="noopener">Código</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="capa vazia">33<span class="tag">Estudos</span></div>
+      <div class="corpo">
+        <h3>Exercícios e protótipos</h3>
+        <p>Trinta e três projetos de Mobile, Back-end, Web, IoT e IA organizados por disciplina e semestre, com histórico preservado e um índice do que cada um faz.</p>
+        <div class="chips"><span class="chip">Flutter</span><span class="chip">Node</span><span class="chip">Vue</span><span class="chip">scikit-learn</span></div>
+        <div class="links">
+          <a class="btn pequeno" href="https://github.com/DiogusVincere/faculdade" target="_blank" rel="noopener">Repositório</a>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <h2 id="sobre">Sobre</h2>
+  <div class="sobre">
+    <div>
+      <p class="lead" style="margin-bottom:12px">Formado em Análise e Desenvolvimento de Sistemas, em Campinas-SP. Gosto de problemas em que o dado chega bagunçado e precisa sair confiável.</p>
+      <ul>
+        <li><b>Aplicações desktop em Python</b> (Tkinter) com leitura de Excel em layouts diferentes, detecção automática de colunas pelo conteúdo e geração de arquivos de importação.</li>
+        <li><b>Aplicações web locais</b> com servidor HTTP em Python, interface em JavaScript puro e dados em JSON ou SQLite, incluindo um gestor de demandas com quadro, lista, calendário e notificações.</li>
+        <li><b>Extração e tratamento de dados</b>: tabelas de PDF, XML em lote, comparação de bases e relatórios de divergência.</li>
+        <li><b>Integrações</b> com Outlook por COM e APIs REST; automação de envios e respostas.</li>
+      </ul>
+    </div>
+    <div class="caixa">
+      <h4>Stack</h4>
+      <div class="chips">
+        <span class="chip">Python</span><span class="chip">pandas</span><span class="chip">openpyxl</span><span class="chip">Tkinter</span><span class="chip">lxml</span><span class="chip">pdfplumber</span>
+        <span class="chip">Dart · Flutter</span><span class="chip">JavaScript · TypeScript</span><span class="chip">Vue 3</span><span class="chip">Node · Express</span><span class="chip">Django REST</span>
+        <span class="chip">SQLite</span><span class="chip">MongoDB</span><span class="chip">Git · GitHub Actions</span><span class="chip">Render · Vercel · Azure</span>
+      </div>
+      <h4 style="margin-top:18px">Estudando agora</h4>
+      <div class="chips"><span class="chip">TypeScript</span><span class="chip">Arquitetura de APIs</span></div>
+    </div>
+  </div>
+
+  <h2 id="contato">Contato</h2>
+  <div class="botoes">
+    <a class="btn principal" href="mailto:diogovlima03@gmail.com">diogovlima03@gmail.com</a>
+    <a class="btn" href="https://www.linkedin.com/in/diogo-vieira-de-lima-165767234" target="_blank" rel="noopener">LinkedIn</a>
+    <a class="btn" href="https://github.com/DiogusVincere" target="_blank" rel="noopener">GitHub</a>
+  </div>
+
+  <footer><span>Diogo Vieira · Campinas-SP</span><span>Página estática no GitHub Pages, sem rastreadores.</span></footer>
+</div>
+</body>
+</html>
