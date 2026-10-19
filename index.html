@@ -91,14 +91,14 @@
   <div class="grade">
 
     <article class="card">
-      <div class="capa vazia">NFS-e<span class="tag">Automação · Python</span></div>
+      <div class="capa"><img src="img/robo-nfse.jpg" alt="Interface local do Robô NFS-e: totais de tomadas, prestadas e retenções, e a lista de notas"><span class="tag">Automação · Python</span></div>
       <div class="corpo">
-        <h3>Robô NFS-e Tomados</h3>
-        <p>Extrai as notas de serviço tomadas de cada empresa direto dos web services públicos (Nota Paulistana por SOAP assinado e o Sistema Nacional NFS-e por API REST com mTLS e NSU incremental), organiza por competência, classifica por município do prestador e escritura no portal municipal com travas antes de gravar: anti-duplicidade, número conferido, ISS recalculado. Idempotente, com falha isolada por empresa e demonstração offline.</p>
-        <div class="chips"><span class="chip">Python</span><span class="chip">SOAP · XMLDSig</span><span class="chip">REST · mTLS</span><span class="chip">lxml · cryptography</span><span class="chip">Interface local</span><span class="chip">83 testes · CI</span></div>
+        <h3>Robô NFS-e: tomadas e prestadas</h3>
+        <p>Busca as notas de serviço que cada empresa tomou e as que ela prestou direto dos web services públicos (Nota Paulistana por SOAP assinado e o Sistema Nacional NFS-e por API REST com mTLS e NSU incremental), organiza por competência e lê de cada nota o que foi retido: ISS, INSS, IRRF, PIS, COFINS e CSLL, inclusive quando o leiaute só traz a soma, conferindo o total informado. As tomadas de fora do município são escrituradas no portal com travas antes de gravar: anti-duplicidade, número conferido, ISS recalculado. Idempotente, com falha isolada por empresa e demonstração offline.</p>
+        <div class="chips"><span class="chip">Python</span><span class="chip">SOAP · XMLDSig</span><span class="chip">REST · mTLS</span><span class="chip">lxml · cryptography</span><span class="chip">Retenções por tributo</span><span class="chip">Interface local</span><span class="chip">112 testes · CI</span></div>
         <div class="links">
-          <a class="btn pequeno principal" href="https://github.com/DiogusVincere/robo-nfse-tomados/releases/latest" target="_blank" rel="noopener">Baixar para Windows</a>
-          <a class="btn pequeno" href="https://github.com/DiogusVincere/robo-nfse-tomados" target="_blank" rel="noopener">Código e README</a>
+          <a class="btn pequeno principal" href="https://github.com/DiogusVincere/robo-nfse/releases/latest" target="_blank" rel="noopener">Baixar para Windows</a>
+          <a class="btn pequeno" href="https://github.com/DiogusVincere/robo-nfse" target="_blank" rel="noopener">Código e README</a>
         </div>
         <p style="font-size:12.5px">Interface local: o certificado A1 não sai da sua máquina. Sem certificado, há o modo com dados simulados.</p>
       </div>
